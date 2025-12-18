@@ -1,0 +1,10 @@
+cython
+transformers
+scipy
+shapely
+timm
+h5py
+scikit-image
+albumentations
+tensorboardX
+Pillow==9.5.0

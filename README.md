@@ -63,7 +63,7 @@ pip install tensorboardX
   
 ```
 ## 🚀Training
-
+Firstly, download the backbone weights (`swin_base_patch4_window12_384_22k.pth`) and  (`bert-base-uncased`).
 ```
 sh train.sh
 ```

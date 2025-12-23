@@ -55,7 +55,7 @@ pip install tensorboardX
 | -- datasets
         | -- anns
             | -- omniRef_train/val.json
-            | -- grefcoco.json
+            | -- grefs(unc).json
         | -- images
             | -- train2014
                 | -- COCO_train2014_XXXXX.jpg

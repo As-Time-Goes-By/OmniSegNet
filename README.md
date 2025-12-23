@@ -54,8 +54,11 @@ pip install tensorboardX
 ```
 | -- datasets
         | -- anns
-            | -- omniRef_train/val.json
-            | -- grefs(unc).json
+            | -- omniRef
+                | -- omniRef_train/val.json
+            | -- gRefCOCO
+                | -- grefs(unc).json
+                | -- instances.json
         | -- images
             | -- train2014
                 | -- COCO_train2014_XXXXX.jpg
@@ -70,7 +73,7 @@ sh train.sh
 
 ## 🤝 Acknowledgments
 
-This project is based on [refer](https://github.com/lichengunc/refer), [ReLA](https://github.com/henghuiding/ReLA), [Detectron2](https://github.com/facebookresearch/detectron2), [VRP-SAM](https://github.com/syp2ysy/VRP-SAM). Many thanks to the authors for their great works!
+This project is based on [refer](https://github.com/lichengunc/refer), [ReLA](https://github.com/henghuiding/ReLA), [Detectron2](https://github.com/facebookresearch/detectron2), [VRP-SAM](https://github.com/syp2ysy/VRP-SAM). Many thanks to the authors for their great works!  
 
 
 ## ✏️ Citation

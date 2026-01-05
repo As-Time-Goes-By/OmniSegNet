@@ -1,6 +1,6 @@
 # Omni-Referring Image Segmentation
 
-[![arXiv](https://img.shields.io/badge/Arxiv-2512.06862-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2512.06862) [![Hugging Face Dataset](https://img.shields.io/badge/HuggingFace-Dataset-yellow?logo=huggingface)](https://huggingface.co/datasets/TUZKI/OmniRef) [![Project](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-blue)](https://as-time-goes-by.github.io/OmniRIS.github.io/)
+[![Project](https://img.shields.io/badge/Project-Page-Green)](https://as-time-goes-by.github.io/OmniRIS.github.io/) [![arXiv](https://img.shields.io/badge/Arxiv-2512.06862-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2512.06862) [![Hugging Face Dataset](https://img.shields.io/badge/HuggingFace-Dataset-yellow?logo=huggingface)](https://huggingface.co/datasets/TUZKI/OmniRef) 
 
 ## 🗓️TODO
 

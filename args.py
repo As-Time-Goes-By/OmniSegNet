@@ -8,8 +8,8 @@ def get_parser():
     parser.add_argument('--img_size', default=448, type=int, help='input image size')
     parser.add_argument('--split', default='test', help='only used when testing')
     parser.add_argument('--splitBy', default='unc', help='change to umd or google when the dataset is G-Ref (RefCOCOg)')
-    parser.add_argument('--refer_data_root', default=None, help='REFER dataset root directory')
-    parser.add_argument('--refer_root', default=None, help='REFER annotations root directory')
+    parser.add_argument('--image_root', default=None, help='image root directory')
+    parser.add_argument('--refer_root', default=None, help='annotations root directory')
     # General model settings
     parser.add_argument('--model', default=None, help='model: lavt, lavt_one')
     parser.add_argument('--model_id', default=None, help='name to identify the model')

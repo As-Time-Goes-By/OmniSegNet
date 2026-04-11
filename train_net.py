@@ -149,6 +149,8 @@ def setup(args):
     cfg.merge_from_file(args.config_file)
     cfg.OUTPUT_DIR=args.output_dir
     cfg.DATASETS.DATASET_NAME=args.dataset
+    cfg.DATASETS.IMAGE_ROOT=args.image_root
+    cfg.DATASETS.REF_ROOT=args.refer_root
     cfg.MODEL.SWIN.SWIN_PRETRAINED_WEIGHTS = args.pretrained_swin_weights
     cfg.REFERRING.BERT_TYPE=args.bert_tokenizer
     cfg.SOLVER.CLIP_GRADIENTS.CLIP_TYPE = "full_model"
@@ -197,8 +199,8 @@ def main(args,distributed):
         train_set = RefCOCODataSet(cfg, split='train',splitby='unc')
         val_set = RefCOCODataSet(cfg, split='val',splitby='unc')
     elif cfg.DATASETS.DATASET_NAME=='OmniRef':
-        train_set = OmniRefDataSet(cfg, split='train')
-        val_set = OmniRefDataSet(cfg, split='val')
+        train_set = OmniRefDataSet(cfg, split='visual-train')
+        val_set = OmniRefDataSet(cfg, split='visual-test')
     num_tasks = utils.get_world_size()
     global_rank = utils.get_rank()
 

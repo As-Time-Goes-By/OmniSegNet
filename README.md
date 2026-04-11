@@ -54,8 +54,9 @@ pip install tensorboardX
 ```
 | -- datasets
         | -- anns
-            | -- omniRef
-                | -- omniRef_train/val.json
+            | -- OmniRef
+                | -- OmniRef.json
+                | -- instances.json
             | -- gRefCOCO
                 | -- grefs(unc).json
                 | -- instances.json

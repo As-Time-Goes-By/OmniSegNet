@@ -57,21 +57,15 @@ def batch_evaluate_omni(cfg,model, data_loader,dataset_name,split):
             for key in ref_data.keys():
                 ref_data[key] = ref_data[key].cuda(non_blocking=True)
 
-            # with torch.cuda.amp.autocast():
-            # if dataset_name=='grefcoco':
-            #     output = model(ref_data=data)
-            # elif dataset_name=='gvpcoco':
-            #     output = model(supp_data=data)
+            
             output = model(ref_data=ref_data,supp_data=supp_data)
-            # 处理评估器
-            # batch_predictions = process(data, output, cfg.DATASETS.DATASET_NAME)
-            # predictions.extend(batch_predictions)  # Use extend instead of +=
-            batch_size = ref_data['image'].shape[0] # 假设 batch 中每个字段的第一个维度是 batch_size
+            
+            batch_size = ref_data['image'].shape[0] 
             assert batch_size==1
             for i in range(batch_size):
                 src = dataset_name
                 assert src in _available_sources
-                # 提取 GT 和预测 mask
+                
                 gt_mask = torch.bitwise_or(ref_data['gt_mask_merged'][i],supp_data['gt_mask_merged'][i]).to(_cpu_device)
                 output_mask_ref = output[0]["ref_seg"].argmax(dim=0).to(_cpu_device)
                 output_mask_supp = output[1]["ref_seg"].argmax(dim=0).to(_cpu_device)
@@ -80,8 +74,8 @@ def batch_evaluate_omni(cfg,model, data_loader,dataset_name,split):
 
                 pred_mask = np.array(output_mask, dtype=np.int8)
                 gt = np.array(gt_mask, dtype=np.int8)
-                # 提取 NT label
-                gt_nt = ref_data.get('empty', [False])[i]  # 如果 'empty' 是可选的，提供默认值
+               
+                gt_nt = ref_data.get('empty', [False])[i]  
                 output_nt_ref = output[0]["nt_label"].argmax(dim=0).bool().to(_cpu_device)
                 output_nt_supp = output[1]["nt_label"].argmax(dim=0).bool().to(_cpu_device)
                 if output_nt_ref and output_nt_supp:
@@ -163,29 +157,26 @@ def batch_evaluate_omni(cfg,model, data_loader,dataset_name,split):
     detected_srcs = [src for src in _available_sources if total_count[src] > 0]
 
     final_results_list = []
-    # print(total_count[src],not_empty_count[src], empty_count[src],len(data_loader.dataset))
-    # results for each source
+  
     for src in detected_srcs:
         res = {}
-        # 转换为可序列化格式
-        res['gIoU'] = float(100. * (accum_IoU[src] / total_count[src]))  # 确保转换为浮动值
-        res['cIoU'] = float(accum_I[src] * 100. / accum_U[src])  # 确保转换为浮动值
+        
+        res['gIoU'] = float(100. * (accum_IoU[src] / total_count[src])) 
+        res['cIoU'] = float(accum_I[src] * 100. / accum_U[src]) 
 
         if empty_count[src] > 0:
             res['T_acc'] = float(nt[src]['TN'] / (nt[src]['TN'] + nt[src]['FP']))
             res['N_acc'] = float(nt[src]['TP'] / (nt[src]['TP'] + nt[src]['FN']))
         else:
-            res['T_acc'] = res['N_acc'] = 0.0  # 如果没有空样本，直接赋值为0
+            res['T_acc'] = res['N_acc'] = 0.0  
 
-        # 处理 Pr@{thres} 的部分
+       
         for thres in pr_thres:
             pr_name = f'Pr@{thres:1.1f}'
-            res[pr_name] = float(pr_count[src][thres] * 100. / not_empty_count[src])  # 转换为浮动值
+            res[pr_name] = float(pr_count[src][thres] * 100. / not_empty_count[src])  
 
         final_results_list.append((src, res))
-    # predictions=evaluator.get_all_predictions()
-    # print(len(predictions))
-    # results= evaluate(predictions,output_folder,cfg.DATASETS.DATASET_NAME)
+   
 
     if len(detected_srcs) > 1:
         res_full = {}

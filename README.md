@@ -1,3 +1,5 @@
+
+
 # Omni-Referring Image Segmentation
 
 [![Project](https://img.shields.io/badge/Project-Page-Green)](https://as-time-goes-by.github.io/OmniRIS.github.io/) [![arXiv](https://img.shields.io/badge/Arxiv-2512.06862-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2512.06862) [![Hugging Face Dataset](https://img.shields.io/badge/HuggingFace-Dataset-yellow?logo=huggingface)](https://huggingface.co/datasets/TUZKI/OmniRef) 
@@ -22,7 +24,7 @@ conda activate omnisegnet
 pip3 install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
 ```
 
-- Install Detectron following the [official installation instructions](https://detectron2.readthedocs.io/en/latest/tutorials/install.html)
+- Install Detectron2 following the [official installation instructions](https://detectron2.readthedocs.io/en/latest/tutorials/install.html)
   
 ```bash
 python -m pip install 'git+https://github.com/MaureenZOU/detectron2-xyz.git'

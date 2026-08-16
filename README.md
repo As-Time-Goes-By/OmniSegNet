@@ -72,6 +72,11 @@ Firstly, download the backbone weights (`swin_base_patch4_window12_384_22k.pth`)
 sh train.sh
 ```
 
+## ✨ Model
+The model can be downloaded from:
+
+[Google Drive](https://drive.google.com/file/d/1rXf2-5MEgefJ3rINqgX4m5rVOYr29urc/view?usp=drive_link)
+
 ## 🤝 Acknowledgments
 
 This project is based on [refer](https://github.com/lichengunc/refer), [ReLA](https://github.com/henghuiding/ReLA), [Detectron2](https://github.com/facebookresearch/detectron2), [VRP-SAM](https://github.com/syp2ysy/VRP-SAM). Many thanks to the authors for their great works!  
